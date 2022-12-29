@@ -1,5 +1,6 @@
 package com.rocky.springbootmall.rowmapper;
 
+import com.rocky.springbootmall.constant.ProductCategory;
 import com.rocky.springbootmall.model.Product;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -14,7 +15,8 @@ public class ProductRowMapper implements RowMapper<Product> {
 
         product.setProductId(resultSet.getInt("product_id"));
         product.setProductName(resultSet.getString("product_name"));
-        product.setCategory(resultSet.getString("category"));
+        //也可以直接寫成這樣就好 String 轉 category
+        product.setCategory(ProductCategory.valueOf(resultSet.getString("category")));
         product.setImage_url(resultSet.getString("image_url"));
         product.setPrice(resultSet.getInt("price"));
         product.setStock(resultSet.getInt("stock"));
