@@ -1,13 +1,14 @@
 package com.rocky.springbootmall.controller;
 
+import com.rocky.springbootmall.dto.ProductRequest;
 import com.rocky.springbootmall.model.Product;
 import com.rocky.springbootmall.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 public class ProductController {
@@ -23,5 +24,16 @@ public class ProductController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
 
+    }
+
+    @PostMapping("/products")
+    public ResponseEntity<Product> createProduct(@RequestBody @Valid ProductRequest productRequest) {
+        //實作新增商品功能 由 controller 寫回 dao
+        //可先建立預期的方法，此時createProduct還沒新建(只是預想會有)，所以會是紅色的
+        Integer productId = productService.createProduct(productRequest);
+
+        Product product = productService.getProductById(productId);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(product);
     }
 }

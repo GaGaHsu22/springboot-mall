@@ -17,7 +17,7 @@ public class ProductRowMapper implements RowMapper<Product> {
         product.setProductName(resultSet.getString("product_name"));
         //也可以直接寫成這樣就好 String 轉 category
         product.setCategory(ProductCategory.valueOf(resultSet.getString("category")));
-        product.setImage_url(resultSet.getString("image_url"));
+        product.setImageUrl(resultSet.getString("image_url"));
         product.setPrice(resultSet.getInt("price"));
         product.setStock(resultSet.getInt("stock"));
         product.setDescription(resultSet.getString("description"));
@@ -25,6 +25,6 @@ public class ProductRowMapper implements RowMapper<Product> {
         product.setCreateDate(resultSet.getTimestamp("created_date"));
         product.setLastModifiedDate(resultSet.getTimestamp("last_modified_date"));
 
-          return product;
+        return product;
     }
 }

@@ -1,6 +1,7 @@
 package com.rocky.springbootmall.service.impl;
 
 import com.rocky.springbootmall.dao.ProductDao;
+import com.rocky.springbootmall.dto.ProductRequest;
 import com.rocky.springbootmall.model.Product;
 import com.rocky.springbootmall.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,5 +16,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product getProductById(Integer productId) {
         return productDao.getProductById(productId);
+    }
+
+    @Override
+    public Integer createProduct(ProductRequest productRequest) {
+        //也是先預想會有這個function，接著再進到Dao層去新增與實作
+        return productDao.createProduct(productRequest);
     }
 }
