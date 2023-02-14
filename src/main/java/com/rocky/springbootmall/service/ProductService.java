@@ -3,7 +3,11 @@ package com.rocky.springbootmall.service;
 import com.rocky.springbootmall.dto.ProductRequest;
 import com.rocky.springbootmall.model.Product;
 
+import java.util.List;
+
 public interface ProductService {
+
+    List<Product> getProducts();
 
     Product getProductById(Integer productId);
 
@@ -12,4 +16,6 @@ public interface ProductService {
     void updateProduct(Integer productId,ProductRequest productRequest);
 
     void deleteProductById(Integer productId);
+
+
 }
