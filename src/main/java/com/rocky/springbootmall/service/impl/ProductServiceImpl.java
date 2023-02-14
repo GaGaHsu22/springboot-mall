@@ -1,5 +1,6 @@
 package com.rocky.springbootmall.service.impl;
 
+import com.rocky.springbootmall.constant.ProductCategory;
 import com.rocky.springbootmall.dao.ProductDao;
 import com.rocky.springbootmall.dto.ProductRequest;
 import com.rocky.springbootmall.model.Product;
@@ -16,8 +17,8 @@ public class ProductServiceImpl implements ProductService {
     private ProductDao productDao;
 
     @Override
-    public List<Product> getProducts() {
-        return productDao.getProducts();
+    public List<Product> getProducts(ProductCategory category, String search) {
+        return productDao.getProducts(category, search);
     }
 
     @Override
