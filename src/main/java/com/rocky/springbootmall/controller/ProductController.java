@@ -1,6 +1,7 @@
 package com.rocky.springbootmall.controller;
 
 import com.rocky.springbootmall.constant.ProductCategory;
+import com.rocky.springbootmall.dto.ProductQueryParams;
 import com.rocky.springbootmall.dto.ProductRequest;
 import com.rocky.springbootmall.model.Product;
 import com.rocky.springbootmall.service.ProductService;
@@ -22,7 +23,11 @@ public class ProductController {
             @RequestParam(required = false) ProductCategory category,
             @RequestParam(required = false) String search
     ) {
-        List<Product> productList = productService.getProducts(category, search);
+        ProductQueryParams productQueryParams = new ProductQueryParams();
+        productQueryParams.setCategory(category);
+        productQueryParams.setSearch(search);
+
+        List<Product> productList = productService.getProducts(productQueryParams);
         return ResponseEntity.status(HttpStatus.OK).body(productList);
     }
 
